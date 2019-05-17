@@ -1,0 +1,9 @@
+$font: #333;
+$grey: #e6e6e6;
+
+@mixin flex_layout($type: space-between, $align: center, $direction: row) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $type;
+    align-items: $align;
+}

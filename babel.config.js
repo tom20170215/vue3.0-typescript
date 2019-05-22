@@ -6,10 +6,13 @@ module.exports = {
     [
       "import",
       {
-        "libraryName": "vant",
-        "style": true
-      }
+        libraryName: "vant",
+        libraryDirectory: 'es',
+        style: true
+      },
+      "vant"
     ],
-    '@babel/plugin-transform-runtime'
+    // '@babel/plugin-transform-runtime',
+    // 'lodash'
   ]
 }

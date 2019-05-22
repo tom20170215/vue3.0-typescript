@@ -1,15 +1,16 @@
 @import './../../../style/mixin.scss';
-p{
+
+p {
     margin: .2rem 0 0 0;
     color: gray;
     font-size: 50%;
     text-align: center;
 }
 
-.active{
+.active {
     color: $font;
 }
 
-a{
+a {
     text-decoration: none;
 }

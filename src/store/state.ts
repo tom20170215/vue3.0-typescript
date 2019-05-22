@@ -23,6 +23,11 @@ export interface RepeatingDateState {
   checked: boolean;
 }
 
+export interface TimeSlotList {
+  id: number;
+  title: string;
+}
+
 // 习惯的状态信息
 export interface HabitList {
   id: number;
@@ -40,6 +45,7 @@ export interface HabitList {
     activeTimes: number;
     // 一周内需要重复的天数
     RepeatingDate: RepeatingDateState[] | never[];
+    timeSlotList: TimeSlotList[] | never[];
   };
   // 习惯日志
   habitLog: {
@@ -124,6 +130,36 @@ const state: State = {
         {id: 4, date: '星期四', checked: true},
         {id: 5, date: '星期五', checked: true},
         {id: 6, date: '星期六', checked: true},
+      ],
+      timeSlotList: [
+        {
+          id: 0,
+          title: '起床之后',
+        },
+        {
+          id: 1,
+          title: '晨间习惯',
+        },
+        {
+          id: 2,
+          title: '中午时分',
+        },
+        {
+          id: 3,
+          title: '午间习惯',
+        },
+        {
+          id: 4,
+          title: '晚间习惯',
+        },
+        {
+          id: 5,
+          title: '睡觉之前',
+        },
+        {
+          id: 6,
+          title: '任意时间',
+        },
       ],
     },
     habitLog: {

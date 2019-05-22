@@ -3,7 +3,10 @@
         <!-- footer icon-->
         <router-link v-if="!!path" :to="path">
             <span @click="changeActivePage">
-                <icon :name="!isActived ? name.defaultName : name.activedName" style="width:2rem;height:2rem;"></icon>
+                <icon
+                    :name="!isActived ? name.defaultName : name.activedName"
+                    style="width:2rem;height:2rem;"
+                ></icon>
                 <p :class="{active: isActived}">{{tagName}}</p>
             </span>
         </router-link>

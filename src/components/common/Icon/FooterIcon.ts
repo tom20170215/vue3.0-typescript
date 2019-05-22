@@ -1,10 +1,10 @@
-import { Component, Vue, Prop } from 'vue-property-decorator';
-import {Mutation} from 'vuex-class';
+import { Component, Vue, Prop } from "vue-property-decorator";
+import { Mutation } from "vuex-class";
 
-import template from './Icon.vue';
+import template from "./Icon.vue";
 
 @Component({
-  name: 'FooterIcon',
+  name: "FooterIcon",
   mixins: [template],
 })
 export default class FooterIcon extends Vue {

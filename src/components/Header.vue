@@ -31,7 +31,7 @@ export default class Header extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import '@/style/mixin.scss';
+@import './../style/mixin.scss';
 header{
     width: 100%;
     height: 3.5rem;

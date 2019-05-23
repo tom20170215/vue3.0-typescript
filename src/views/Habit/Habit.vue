@@ -2,7 +2,7 @@
     <div class="habit">
         <van-tabs @click="changeTitle">
             <van-tab v-for="(item, index) in tabsComputed" :key="index" :title="item">
-              <List :leftValue='编辑' :rightValue='归档' :habitInfo=></List>
+              <List :leftValue='leftValue' :rightValue='rightValue' v-for="item in changeTab" :key="item.id" :iconName="item.iconName" :habitInfo="item.habitInfo"></List>
             </van-tab>
         </van-tabs>
     </div>
@@ -19,7 +19,7 @@ import List from '@/components/common/HabitList/List.vue';
   components: {
     [Tab.name]: Tab,
     [Tabs.name]: Tabs,
-    List
+    List,
   },
 })
 export default class Habit extends Vue {
@@ -27,6 +27,10 @@ export default class Habit extends Vue {
   private habitList!: HabitList[];
 
   private currentTitle!: string;
+
+  private leftValue: string = '编辑';
+
+  private rightValue: string = '归档';
 
   private data() {
     return {
@@ -53,9 +57,22 @@ export default class Habit extends Vue {
   private get changeTab() {
     const total: HabitList[] = [];
     if (this.currentTitle !== '全部') {
-
+      this.habitList.forEach((item: HabitList) => {
+        if (item.isActive && item.mode === 'done') {
+          const {activeTimes, timeSlotList} = item.habitInfo;
+          // @ts-ignore
+          const timeSlot =  timeSlotList.find((ele: any) => ele.id === activeTimes);
+          if (timeSlot!.title === this.currentTitle) {
+            total.push(item);
+          }
+        }
+      })
     } else {
-      
+      this.habitList.forEach((item: HabitList) => {
+        if (item.isActive && item.mode === 'done') {
+          total.push(item);
+        }
+      })
     }
     return total;
   }

@@ -37,6 +37,11 @@ function getDateList(arr: RepeatingDateState[]) {
     return list;
 }
 
+function findIndex(arr: HabitList[], id: number): number{
+  
+  return -1;
+}
+
 const utils = {
   dateComparison(arr: HabitList[], preDay: number = 0) {
     let day: number;
@@ -58,6 +63,10 @@ const utils = {
     }
     return currentList;
   },
+  find(arr: HabitList[], id: number): HabitList | undefined{
+
+    return;
+  }
 };
 
 export default utils;

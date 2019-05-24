@@ -1,9 +1,18 @@
 $font: #333;
 $grey: #e6e6e6;
+$warn: #ff4149;
+$font-o: #fff;
+$edit: #444;
 
+// 主轴对齐、辅助轴对齐、方向
 @mixin flex_layout($type: space-between, $align: center, $direction: row) {
     display: flex;
     flex-direction: $direction;
     justify-content: $type;
     align-items: $align;
+}
+
+// 字体大小、行高、字体
+@mixin font($size: 1rem, $line-height: 100%, $family: 'Microsoft YaHei') {
+    font: #{$size}/#{$line-height} $family;
 }

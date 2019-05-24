@@ -2,7 +2,9 @@
     <div class="habit">
         <van-tabs @click="changeTitle">
             <van-tab v-for="(item, index) in tabsComputed" :key="index" :title="item">
-              <List :leftValue='leftValue' :rightValue='rightValue' v-for="item in changeTab" :key="item.id" :iconName="item.iconName" :habitInfo="item.habitInfo"></List>
+              <transition-group name='fade'>
+                <List :leftValue='leftValue' :id="item.id" :rightValue='rightValue' v-for="item in changeTab" :key="item.id" :iconName="item.iconName" :habitInfo="item.habitInfo" :habitLog="item.habitLog" :color="item.color" @click-left='edit'></List>
+              </transition-group>
             </van-tab>
         </van-tabs>
     </div>
@@ -11,7 +13,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { Tab, Tabs } from "vant";
-import { State } from "vuex-class";
+import { State, Mutation} from "vuex-class";
 import { HabitList } from "@/store/state";
 import List from '@/components/common/HabitList/List.vue';
 
@@ -31,6 +33,9 @@ export default class Habit extends Vue {
   private leftValue: string = '编辑';
 
   private rightValue: string = '归档';
+
+  @Mutation
+  private changeMode!: (id: number, value: string) => void;
 
   private data() {
     return {
@@ -80,6 +85,12 @@ export default class Habit extends Vue {
   private changeTitle(index: number, title: string) {
     this.currentTitle = title;
   }
+
+  // 编辑
+  private edit(id: number): void {
+    this.$router.push(`/edit/habit?id=${id}`);
+    this.changeMode(id, 'editing');
+  }
 }
 </script>
 
@@ -88,5 +99,11 @@ export default class Habit extends Vue {
 .habit{
   width: 100%;
   height: calc(100vh - 7rem);
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 </style>

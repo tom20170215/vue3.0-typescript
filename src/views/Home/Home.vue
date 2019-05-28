@@ -36,3 +36,12 @@ export default class Home extends Vue {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@import '../../style/mixin.scss';
+.home{
+  width: 100%;
+  height: calc(100vh - 7rem);
+}
+</style>
+

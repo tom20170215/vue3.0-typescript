@@ -14,8 +14,8 @@ export default class FooterIcon extends Vue {
   @Prop() private path!: string;
   @Prop() private id!: number;
 
-  @Mutation private getActivePage!: (id: number) => void;
-  @Mutation private changeHeader!: (id: number) => void;
+  @Mutation private getActivePage!: (id: number) => any;
+  @Mutation private changeHeader!: (id: number) => any;
 
   private changeActivePage(): void {
     const id = this.id;

@@ -37,7 +37,7 @@ function getDateList(arr: RepeatingDateState[]) {
     return list;
 }
 
-function findIndex(arr: HabitList[], id: number): number{
+function findIndex(arr: HabitList[], id: number): number {
   
   return -1;
 }
@@ -63,10 +63,18 @@ const utils = {
     }
     return currentList;
   },
-  find(arr: HabitList[], id: number): HabitList | undefined{
+
+  /**
+   * 通过习惯id查找对应的索引值
+   */
+  findIndex(arr: HabitList[], id: number) {
+    
+  },
+
+  find(arr: HabitList[], id: number): HabitList | undefined {
 
     return;
-  }
+  },
 };
 
 export default utils;

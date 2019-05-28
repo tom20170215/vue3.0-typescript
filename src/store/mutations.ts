@@ -1,4 +1,4 @@
-import { State } from "./state";
+import { State, HabitList } from "./state";
 
 export default {
   // 改变当前页
@@ -33,8 +33,12 @@ export default {
     }
   },
   // 改变习惯的状态
-  changeMode(state: State, id: number, val: string) {
+  changeMode(state: State, payload: { id: number; value: string }) {
     const { habitList } = state;
-    
+  },
+
+  // 创建习惯
+  createHabit(state: State, habit: HabitList) {
+    state.habitList.push(habit);
   }
 };

@@ -16,3 +16,9 @@ $edit: #444;
 @mixin font($size: 1rem, $line-height: 100%, $family: 'Microsoft YaHei') {
     font: #{$size}/#{$line-height} $family;
 }
+
+// 图标大小
+@mixin iconSize($size: 1rem) {
+    width: $size;
+    height: $size;
+}

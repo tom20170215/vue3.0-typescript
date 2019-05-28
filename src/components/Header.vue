@@ -5,7 +5,7 @@
         </aside>
         <div v-else></div>
         <h3>{{headerInfo.title}}</h3>
-        <aside v-if="!!headerInfo.right">
+        <aside v-if="!!headerInfo.right" @click="rightHandle">
             <Icon :name="headerInfo.right"></Icon>
         </aside>
         <div v-else></div>
@@ -27,6 +27,22 @@ import Icon from '@/components/common/Icon/HeaderIcon';
 })
 export default class Header extends Vue {
     @State private headerInfo!: HeaderInfo;
+
+    // 右侧按钮事件处理程序
+    private rightHandle(): void {
+        const right = this.headerInfo.right;
+        switch (right) {
+            case 'new':
+                this.newHabit();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private newHabit(): void {
+        this.$router.push({path: '/new/library'});
+    }
 }
 </script>
 

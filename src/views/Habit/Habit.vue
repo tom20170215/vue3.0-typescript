@@ -35,7 +35,7 @@ export default class Habit extends Vue {
   private rightValue: string = '归档';
 
   @Mutation
-  private changeMode!: (id: number, value: string) => void;
+  private changeMode!: (id: number, value: string) => any;
 
   private data() {
     return {

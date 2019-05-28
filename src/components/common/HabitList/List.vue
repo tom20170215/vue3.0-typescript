@@ -23,8 +23,8 @@ import { SwipeCell, Cell, CellGroup } from "vant";
   components: {
     [SwipeCell.name]: SwipeCell,
     [Cell.name]: Cell,
-    [CellGroup.name]: CellGroup
-  }
+    [CellGroup.name]: CellGroup,
+  },
 })
 export default class List extends Vue {
   @Prop()

@@ -1,8 +1,13 @@
 <template>
   <div id="app">
-    <Header></Header>
-    <router-view></router-view>
-    <Footer></Footer>
+    <div v-if="$route.meta.main" style="width: 100%;">
+      <Header></Header>
+      <router-view></router-view>
+      <Footer></Footer>
+    </div>
+    <div v-else style="width: 100%;">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 

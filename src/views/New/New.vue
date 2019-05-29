@@ -20,10 +20,16 @@ import { NavBar } from "vant";
 export default class New extends Vue {
   @Mutation
   private changeHeader!: (id: number) => any;
+  @Mutation
+  private removeHabit!: () => any;
 
   private create(): void {}
 
   private onClickLeft(): void {
+    if (this.$route.name === '习惯') {
+      // 删除创建的新习惯
+      this.removeHabit();
+    }
     this.$router.go(-1);
   }
 }

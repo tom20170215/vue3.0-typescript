@@ -1,10 +1,10 @@
 <template>
-    <div class="new-habit">
+    <div class="new-habit" v-if='!!habitList[index]'>
         <!-- 图标 -->
         <section class="icon">
             <router-link :to="{path: `/edit/icon/`,query:{mode}}">
                 <Circles>
-                    <icon :name="" slot="icon"></icon>
+                    <icon :name="iconComputed" slot="icon"></icon>
                 </Circles>
             </router-link>
         </section>
@@ -42,7 +42,7 @@ export default class NewHabit extends Vue {
         }
     }
 
-    private create() {
+    private created() {
         if (this.mode === 'edit') {
             // 编辑习惯
             this.id = parseInt((this.$route.query.id) as string, 10);
@@ -57,6 +57,14 @@ export default class NewHabit extends Vue {
                 return;
             }
         }
-    }    
+    } 
+    
+    // 计算当前图标
+    private get iconComputed() {
+        console.log(this.habitList);
+        console.log(this.index);
+        const habit = this.habitList[this.index];
+        return habit.iconName;
+    }
 }
 </script>

@@ -40,5 +40,10 @@ export default {
   // 创建习惯
   createHabit(state: State, habit: HabitList) {
     state.habitList.push(habit);
+  },
+
+  // 删除新创建的习惯
+  removeHabit(state: State) {
+    state.habitList.pop();
   }
 };

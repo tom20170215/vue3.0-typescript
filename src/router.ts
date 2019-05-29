@@ -37,10 +37,12 @@ export default new Router({
       children: [
         {
           path: 'library',
+          name: '习惯库',
           component: () => import(/* webpackChunkName: "NewLibrary" */'./views/New/library/NewLibrary.vue'),
         },
         {
           path: 'Habit',
+          name: '习惯',
           component: () => import(/* webpackChunkName: "NewHabit" */'./views/New/habit/NewHabit.vue'),
         }
       ]

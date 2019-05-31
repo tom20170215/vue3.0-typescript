@@ -13,7 +13,7 @@ function transformDate(date: string | number) {
     [3, "星期三"],
     [4, "星期四"],
     [5, "星期五"],
-    [6, "星期六"],
+    [6, "星期六"]
   ]);
 
   if (typeof date === "number") {
@@ -28,21 +28,24 @@ function transformDate(date: string | number) {
 }
 
 function getDateList(arr: RepeatingDateState[]) {
-    const list: string[] = [];
-    for (const value of arr) {
-        if (value.checked) {
-            list.push(value.date);
-        }
+  const list: string[] = [];
+  for (const value of arr) {
+    if (value.checked) {
+      list.push(value.date);
     }
-    return list;
+  }
+  return list;
 }
 
 function findIndex(arr: HabitList[], id: number): number {
-  
   return -1;
 }
 
 const utils = {
+  getDate(str: string): string{
+    return str.replace(/['星期']/g, '');
+  },
+  
   dateComparison(arr: HabitList[], preDay: number = 0) {
     let day: number;
     if (!preDay) {
@@ -55,11 +58,11 @@ const utils = {
     const current = transformDate(day);
     const currentList: HabitList[] = [];
     for (const value of arr) {
-        const element = value.habitInfo.RepeatingDate;
-        // @ts-ignore
-        if (getDateList(element).indexOf(current) > -1) {
-            currentList.push(value);
-        }
+      const element = value.habitInfo.RepeatingDate;
+      // @ts-ignore
+      if (getDateList(element).indexOf(current) > -1) {
+        currentList.push(value);
+      }
     }
     return currentList;
   },
@@ -67,14 +70,46 @@ const utils = {
   /**
    * 通过习惯id查找对应的索引值
    */
-  findIndex(arr: HabitList[], id: number) {
-    
+  findIndex(arr: HabitList[], id: number): number {
+    // let i;
+    // arr.forEach(function(ele, index) {
+    //   if (ele.id === id) {
+    //     i = index;
+    //   }
+    // });
+    // if (i) {
+    //   return i;
+    // }else {
+    //   return -1;
+    // }
+
+    let low = 0;
+    let high = arr.length - 1;
+    let mid: number;
+    while (low <= high) {
+      mid = arr[Math.floor((high - low) / 2)].id;
+      if (mid > id) {
+        high = Math.floor((high - low) / 2) - 1;
+      }else if (mid < id) {
+        low = Math.floor((high - low) / 2) + 1;
+      }else {
+        return Math.floor((high - low) / 2);
+      }
+    }
+    return -1;
   },
 
+  /**
+   *
+   * @param arr 通过id查找某个习惯
+   * @param id
+   */
   find(arr: HabitList[], id: number): HabitList | undefined {
-
-    return;
-  },
+    const index = utils.findIndex(arr, id);
+    if (index > 0) {
+      return arr[index];
+    }
+  }
 };
 
 export default utils;

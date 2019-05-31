@@ -1,4 +1,5 @@
 import { State, HabitList } from "./state";
+import _ from "@/utils";
 
 export default {
   // 改变当前页
@@ -45,5 +46,11 @@ export default {
   // 删除新创建的习惯
   removeHabit(state: State) {
     state.habitList.pop();
+  },
+
+  changeHabitName(state: State, payload: { id: number; value: string }) {
+    const { habitList } = state;
+    const habit = _.find(habitList, payload.id);
+    habit!.habitInfo.habitname = payload.value;
   }
 };
